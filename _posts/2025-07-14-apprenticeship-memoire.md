@@ -15,4 +15,4 @@ During this time, I had the opportunity to present one of the projects I worked 
 
 Please note that the work is still in progress, but you can find our current progress and early findings in the document linked below.
 
-📄 [Download the thesis (PDF)](./public/apprenticeship_thesis.pdf)
+📄 [Download the thesis (PDF)](./assets/public/apprenticeship_thesis.pdf)
