@@ -119,7 +119,7 @@ if ! git subtree split --prefix public -b deploy; then
     exit 1
 fi
 
-if ! git push origin deploy: --force; then
+if ! git push origin deploy --force; then
     echo "Failed to push to branch."
     git branch -D deploy
     exit 1
