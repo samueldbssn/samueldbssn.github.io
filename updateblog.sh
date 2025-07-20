@@ -9,7 +9,7 @@ cd "$SCRIPT_DIR"
 currentUser=$USER
 
 sourcePath="/home/$currentUser/Nextcloud/Luhman/posts"
-destinationPath="/home/$currentUser/Nextcloud/website/blog/content/posts"
+destinationPath="/home/$currentUser/Nextcloud/website/blog/content"
 
 # Set GitHub Repo
 myrepo="git@github.com:samueldbssn/samueldbssn.github.io.git"
