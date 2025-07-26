@@ -3,27 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>/posts/test/</loc>
+    <loc>//localhost:1313/posts/test/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>/</loc>
+    <loc>//localhost:1313/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
     <xhtml:link
       rel="alternate"
       hreflang="en"
-      href="/en/"
+      href="//localhost:1313/en/"
     />
     <xhtml:link
       rel="alternate"
       hreflang="fr"
-      href="/"
+      href="//localhost:1313/"
     />
   </url>
   <url>
-    <loc>/posts/</loc>
+    <loc>//localhost:1313/posts/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
