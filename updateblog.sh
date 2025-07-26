@@ -22,6 +22,24 @@ for cmd in git rsync python3 hugo; do
     fi
 done
 
+# Default: don't push
+DO_PUSH=false
+
+# Parse arguments
+for arg in "$@"; do
+    case $arg in
+        --push)
+            DO_PUSH=true
+            shift
+            ;;
+        *)
+            echo "Unknown argument: $arg"
+            echo "Usage: $0 [--push]"
+            exit 1
+            ;;
+    esac
+done
+
 # Step 1: Check if Git is initialized, and initialize if necessary
 if [ ! -d ".git" ]; then
     echo "Initializing Git repository..."
@@ -84,47 +102,49 @@ if ! hugo; then
     exit 1
 fi
 
-# Step 5: Add changes to Git
-echo "Staging changes for Git..."
-if git diff --quiet && git diff --cached --quiet; then
-    echo "No changes to stage."
-else
-    git add .
-fi
+if [ "$DO_PUSH" = true ]; then
+    # Step 5: Add changes to Git
+    echo "Staging changes for Git..."
+    if git diff --quiet && git diff --cached --quiet; then
+        echo "No changes to stage."
+    else
+        git add .
+    fi
 
-# Step 6: Commit changes with a dynamic message
-commit_message="New Blog Post on $(date +'%Y-%m-%d %H:%M:%S')"
-if git diff --cached --quiet; then
-    echo "No changes to commit."
-else
-    echo "Committing changes..."
-    git commit -m "$commit_message"
-fi
+    # Step 6: Commit changes with a dynamic message
+    commit_message="New Blog Post on $(date +'%Y-%m-%d %H:%M:%S')"
+    if git diff --cached --quiet; then
+        echo "No changes to commit."
+    else
+        echo "Committing changes..."
+        git commit -m "$commit_message"
+    fi
 
-# Step 7: Push all changes to the main branch
-echo "Deploying to GitHub Main..."
-if ! git push origin master; then
-    echo "Failed to push to master branch."
-    exit 1
-fi
+    # Step 7: Push all changes to the main branch
+    echo "Deploying to GitHub Main..."
+    if ! git push origin master; then
+        echo "Failed to push to master branch."
+        exit 1
+    fi
 
-# Step 8: Push the public folder to the deploy branch using subtree split and force push
-echo "Deploying to GitHub Deploy..."
-if git branch --list | grep -q 'deploy'; then
+    # Step 8: Push the public folder to the deploy branch using subtree split and force push
+    echo "Deploying to GitHub Deploy..."
+    if git branch --list | grep -q 'deploy'; then
+        git branch -D deploy
+    fi
+
+    if ! git subtree split --prefix public -b deploy; then
+        echo "Subtree split failed."
+        exit 1
+    fi
+
+    if ! git push origin deploy --force; then
+        echo "Failed to push to branch."
+        git branch -D deploy
+        exit 1
+    fi
+
     git branch -D deploy
+else
+    echo "Skipping Git commit and push (use --push to enable)."
 fi
-
-if ! git subtree split --prefix public -b deploy; then
-    echo "Subtree split failed."
-    exit 1
-fi
-
-if ! git push origin deploy --force; then
-    echo "Failed to push to branch."
-    git branch -D deploy
-    exit 1
-fi
-
-git branch -D deploy
-
-echo "All done! Site synced, processed, committed, built, and deployed."
