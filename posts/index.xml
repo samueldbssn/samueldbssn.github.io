@@ -2,41 +2,41 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Blowfish</title>
-    <link>/posts/</link>
+    <link>//localhost:1313/posts/</link>
     <description>Recent content in Posts on Blowfish</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <managingEditor>sdubuisson08@gmail.com (Samuel Dubuisson)</managingEditor>
     <webMaster>sdubuisson08@gmail.com (Samuel Dubuisson)</webMaster>
     <copyright>© 2025 Samuel Dubuisson</copyright>
-    <lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Jul 2025 00:00:00 +0000</lastBuildDate><atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Mémoire de recherche</title>
-      <link>/posts/m%C3%A9moire-de-recherche/</link>
+      <link>//localhost:1313/posts/m%C3%A9moire-de-recherche/</link>
       <pubDate>Mon, 28 Jul 2025 00:00:00 +0000</pubDate>
       <author>sdubuisson08@gmail.com (Samuel Dubuisson)</author>
-      <guid>/posts/m%C3%A9moire-de-recherche/</guid>
+      <guid>//localhost:1313/posts/m%C3%A9moire-de-recherche/</guid>
       <description></description>
       
     </item>
     
     <item>
       <title>Berkeley et le monde des idées</title>
-      <link>/posts/berkeley-et-le-monde-des-id%C3%A9es/</link>
+      <link>//localhost:1313/posts/berkeley-et-le-monde-des-id%C3%A9es/</link>
       <pubDate>Sat, 26 Jul 2025 00:00:00 +0000</pubDate>
       <author>sdubuisson08@gmail.com (Samuel Dubuisson)</author>
-      <guid>/posts/berkeley-et-le-monde-des-id%C3%A9es/</guid>
+      <guid>//localhost:1313/posts/berkeley-et-le-monde-des-id%C3%A9es/</guid>
       <description></description>
-      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="/posts/berkeley-et-le-monde-des-id%C3%A9es/featured.png" />
+      <media:content xmlns:media="http://search.yahoo.com/mrss/" url="//localhost:1313/posts/berkeley-et-le-monde-des-id%C3%A9es/featured.png" />
     </item>
     
     <item>
       <title></title>
-      <link>/posts/test/</link>
+      <link>//localhost:1313/posts/test/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>sdubuisson08@gmail.com (Samuel Dubuisson)</author>
-      <guid>/posts/test/</guid>
+      <guid>//localhost:1313/posts/test/</guid>
       <description></description>
       
     </item>
