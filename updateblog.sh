@@ -325,8 +325,6 @@ if [ "$DO_PUSH" = true ]; then
         exit 1
     fi
 
-    echo "LOL"
-
     # Step 8: Push the public folder to the deploy branch using subtree split and force push
     echo "🚀 Deploying to GitHub Deploy..."
 
