@@ -155,18 +155,6 @@ if [ "$DO_PUSH" = true ]; then
     # Step 8: Push the public folder to the deploy branch using subtree split and force push
     echo "🚀 Deploying to GitHub Deploy..."
 
-    # Supprimer la branche locale 'deploy' si elle existe
-    if git branch --list | grep -q 'deploy'; then
-        echo "🧹 Deleting existing local 'deploy' branch..."
-        git branch -D deploy
-    fi
-
-    # Vérifier que le dossier public existe
-    if [ ! -d "blog/public" ]; then
-        echo "❌ 'public' directory does not exist. Ensure Hugo build was successful."
-        exit 1
-    fi
-
     # Créer une branche 'deploy' à partir de blog/public
     if ! git subtree split -P blog/public -b deploy; then
         echo "❌ Subtree split failed. Ensure 'blog/public' exists and is committed."
