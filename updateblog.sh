@@ -147,8 +147,8 @@ if [ "$DO_PUSH" = true ]; then
 
     # Step 7: Push all changes to the main branch
     echo "Deploying to GitHub Main..."
-    if ! git push origin master; then
-        echo "Failed to push to master branch."
+    if ! git push origin main; then
+        echo "Failed to push to main branch."
         exit 1
     fi
 
@@ -320,8 +320,8 @@ if [ "$DO_PUSH" = true ]; then
 
     # Step 7: Push all changes to the main branch
     echo "Deploying to GitHub Main..."
-    if ! git push origin master; then
-        echo "Failed to push to master branch."
+    if ! git push origin main; then
+        echo "Failed to push to main branch."
         exit 1
     fi
 
