@@ -3,22 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>/posts/berkeley-et-le-monde-des-id%C3%A9es/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>/posts/test/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>/</loc>
+    <lastmod>2025-07-28T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>/posts/m%C3%A9moire-de-recherche/</loc>
+    <lastmod>2025-07-28T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>/posts/</loc>
+    <lastmod>2025-07-28T00:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>/posts/test/</loc>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>

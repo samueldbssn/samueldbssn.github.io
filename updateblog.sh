@@ -53,30 +53,52 @@ else
     fi
 fi
 
-# Step 2: Sync posts from Obsidian to Hugo content folder using rsync
-echo "Syncing posts from Obsidian..."
+# Step 2: Transform .md files into Hugo content folders
+echo "Transforming Obsidian posts into Hugo-compatible folders..."
 
-if [ ! -d "$sourcePath" ]; then
-    echo "Source path does not exist: $sourcePath"
-    exit 1
-fi
+# Supprimer seulement les anciens index.md, pas les images
+find "$destinationPath/posts" -type f -name index.md -exec rm -f {} \;
 
-if [ ! -d "$destinationPath" ]; then
-    echo "Destination path does not exist: $destinationPath"
-    exit 1
-fi
+# Boucle sur chaque fichier markdown
+for filepath in "$sourcePath"/*.md; do
+    filename=$(basename "$filepath")
+    name_no_ext="${filename%.md}"
 
-rsync -av --delete "$sourcePath" "$destinationPath"
+    folder_name=$name_no_ext
+    post_folder="$destinationPath/posts/$folder_name"
+
+    mkdir -p "$post_folder"
+
+    # Lire le fichier original
+    original_content=$(cat "$filepath")
+
+    # Séparer front matter et contenu
+    frontmatter=$(awk '/^---$/ {f++; next} f==1 {print}' "$filepath")
+    body=$(awk 'BEGIN{f=0} /^---$/ {f++; next} f==2 {print}' "$filepath")
+
+    # Ajouter le Title dans le front matter
+    updated_frontmatter="$frontmatter"$'\n'"Title: \"$name_no_ext\""
+
+    # Reconstruire le fichier avec front matter modifié
+    {
+        echo "---"
+        echo "$updated_frontmatter"
+        echo "---"
+        echo
+        echo "$body"
+    } > "$post_folder/index.md"
+done
 
 # Step 3: Process Markdown files with Python script to handle image links
 echo "Processing image links in Markdown files..."
 
-postsDir="$destinationPath"
+postsDir="$sourcePath"
 attachmentsDir="/home/$currentUser/Nextcloud/Luhman/Attachments"
 staticImagesDir="/home/$currentUser/Nextcloud/website/blog/static/images"
+staticFilesDir="/home/$currentUser/Nextcloud/website/blog/static/files"
 
-if [ ! -f "images.py" ]; then
-    echo "Python script images.py not found."
+if [ ! -f "handle_attachments.py" ]; then
+    echo "Python script handle_attachments.py not found."
     exit 1
 fi
 
@@ -90,7 +112,7 @@ if [ ! -d "$postsDir" ] || [ ! -d "$attachmentsDir" ] || [ ! -d "$staticImagesDi
 fi
 
 # Lancer le script avec les bons arguments
-if ! python3 images.py "$postsDir" "$attachmentsDir" "$staticImagesDir"; then
+if ! python3 handle_attachments.py "$postsDir" "$attachmentsDir" "$staticImagesDir" "$staticFilesDir" "$destinationPath/posts"; then
     echo "Failed to process image links."
     exit 1
 fi
