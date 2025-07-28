@@ -74,39 +74,42 @@ def process_file(filepath, attachments_dir, img_dir, file_dir, destination_path)
     # Add or replace the title in the front matter
     content = add_or_replace_title(content, title)
 
+    post_slug = os.path.splitext(os.path.basename(filepath))[0]
+    final_dir = os.path.join(destination_path, post_slug)
+
     # Handle thumbnail if present
-    content = handle_thumbnail(content, attachments_dir, img_dir)
+    content = handle_thumbnail(content, attachments_dir, final_dir)
 
     # Convert internal links to markdown links
     content = convert_internal_links(content, attachments_dir, img_dir, VALID_IMAGE_EXTENSIONS, "/images", embed_type="image")
     content = convert_internal_links(content, attachments_dir, file_dir, VALID_FILE_EXTENSIONS, "/files", embed_type="pdf")
 
-    post_slug = os.path.splitext(os.path.basename(filepath))[0]
-    final_dir = os.path.join(destination_path, post_slug)
     ensure_directory(final_dir)
 
     with open(os.path.join(final_dir, "index.md"), "w", encoding="utf-8") as f:
         f.write(content)
 
-def handle_thumbnail(content, attachments_dir, img_dir):
-    # Extract the thumbnail file path from the front matter
-    match = re.search(r'thumbnail:\s*(.*)', content)
+def handle_thumbnail(content, attachments_dir, post_path):
+    # Extract the thumbnail filename from the front matter (e.g., [[Leibniz.png]])
+    match = re.search(r'thumbnail:\s*\"\[\[([^\]]+)\]\]\"', content)
     
     if match:
-        thumbnail_filename = match.group(1).strip()
-        # If the thumbnail exists in the attachments directory, copy it to the img_dir
+        thumbnail_filename = match.group(1)  
+
+        # Check if the thumbnail file exists in the attachments directory
         src_thumbnail_path = os.path.join(attachments_dir, thumbnail_filename)
         
         if os.path.exists(src_thumbnail_path):
-            ensure_directory(img_dir)
-            dest_thumbnail_path = os.path.join(img_dir, os.path.basename(thumbnail_filename))
+            
+            # Copy the thumbnail file to the post folder
+            [_, ext] = thumbnail_filename.rsplit('.', 1)
 
-            # Copy the thumbnail to the static images folder
+            dest_thumbnail_path = os.path.join(post_path, f"featured.{ext}")
             shutil.copy(src_thumbnail_path, dest_thumbnail_path)
             
-            # Update the content's front matter to reference the new image location
+            # Update the front matter with the correct image path in the Hugo static folder
             updated_thumbnail_path = f"/images/{os.path.basename(thumbnail_filename)}"
-            content = re.sub(r'thumbnail:\s*(.*)', f'thumbnail: "{updated_thumbnail_path}"', content)
+            content = re.sub(r'thumbnail:\s*\[\[([^\]]+)\]\]', f'thumbnail: "{updated_thumbnail_path}"', content)
         else:
             print(f"⚠️ Thumbnail file not found: {src_thumbnail_path}")
     

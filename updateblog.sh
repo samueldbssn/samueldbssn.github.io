@@ -56,8 +56,7 @@ fi
 # Step 2: Transform .md files into Hugo content folders
 echo "Transforming Obsidian posts into Hugo-compatible folders..."
 
-# Supprimer seulement les anciens index.md, pas les images
-find "$destinationPath/posts" -type f -name index.md -exec rm -f {} \;
+rm -rf "$destinationPath/posts" 
 
 # Boucle sur chaque fichier markdown
 for filepath in "$sourcePath"/*.md; do
