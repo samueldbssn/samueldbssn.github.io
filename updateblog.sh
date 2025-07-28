@@ -327,11 +327,12 @@ if [ "$DO_PUSH" = true ]; then
 
     # Step 8: Push the public folder to the deploy branch using subtree split and force push
     echo "Deploying to GitHub Deploy..."
+
     if git branch --list | grep -q 'deploy'; then
         git branch -D deploy
     fi
 
-    if ! git subtree split --prefix blog/public -b deploy; then
+    if ! git subtree split --prefix=blog/public -b deploy; then
         echo "Subtree split failed."
         exit 1
     fi
