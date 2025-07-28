@@ -4,6 +4,7 @@ date: 2025-07-26
 draft: true
 tags: 
 categories: Philosophy
+thumbnail: Attachments/Leibniz.png
 Title: "Berkeley et le monde des idées"
 ---
 

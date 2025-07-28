@@ -1,9 +1,9 @@
 ---
-title: "Untitled"
+title: Untitled
 date: 2025-07-27
 draft: true
-tags: []
-categories: []
+thumbnail: 
+categories:
 Title: "La philosophie de Jung"
 ---
 
