@@ -339,8 +339,6 @@ if [ "$DO_PUSH" = true ]; then
         echo "❌ 'public' directory does not exist. Ensure Hugo build was successful."
         exit 1
 
-    git subtree add --prefix=blog/public 
-
     # Créer une branche 'deploy' à partir de blog/public
     if ! git subtree split --prefix=blog/public -b deploy; then
         echo "❌ Subtree split failed. Ensure 'blog/public' exists and is committed."
