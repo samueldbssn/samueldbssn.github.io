@@ -340,7 +340,7 @@ if [ "$DO_PUSH" = true ]; then
         exit 1
 
     # Créer une branche 'deploy' à partir de blog/public
-    if ! git subtree split --prefix=blog/public -b deploy; then
+    if ! git subtree split -P blog/public -b deploy; then
         echo "❌ Subtree split failed. Ensure 'blog/public' exists and is committed."
         exit 1
     fi
