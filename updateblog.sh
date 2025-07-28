@@ -184,6 +184,6 @@ if [ "$DO_PUSH" = true ]; then
     git branch -D deploy
 
     echo "✅ Deployment completed successfully!"
-fi
 else
     echo "Skipping Git commit and push (use --push to enable)."
+fi
