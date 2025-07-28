@@ -331,7 +331,7 @@ if [ "$DO_PUSH" = true ]; then
         git branch -D deploy
     fi
 
-    if ! git subtree split --prefix public -b deploy; then
+    if ! git subtree split --prefix blog/public -b deploy; then
         echo "Subtree split failed."
         exit 1
     fi
