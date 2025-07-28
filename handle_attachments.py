@@ -48,7 +48,7 @@ def convert_internal_links(content, attachments_dir, target_dir, extensions, web
         elif embed_type == "pdf":
             replacement = f"[Voir le PDF]({web_path}/{encoded})"
         else:
-            replacement = f"[Télécharger]({web_path}/{encoded})"
+            replacement = f"[Télécharger le fichier]({web_path}/{encoded})"
 
         updated_content = updated_content.replace(f"[[{filename}]]", replacement)
 
