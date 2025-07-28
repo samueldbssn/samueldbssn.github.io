@@ -335,7 +335,7 @@ if [ "$DO_PUSH" = true ]; then
     fi
 
     # Vérifier que le dossier public existe
-    if [ ! -d "public" ]; then
+    if [ ! -d "blog/public" ]; then
         echo "❌ 'public' directory does not exist. Ensure Hugo build was successful."
         exit 1
 
