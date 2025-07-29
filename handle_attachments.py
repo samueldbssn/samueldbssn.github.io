@@ -38,22 +38,10 @@ def add_or_replace_title(content, title):
 
 def convert_internal_links(content, attachments_dir, target_dir, extensions, web_path, embed_type):
     updated_content = content
-    pattern = r'\[\[([^]]+\.(?:' + "|".join(ext[1:] for ext in extensions) + r'))\]\]'
-    matched_files = re.findall(pattern, content, flags=re.IGNORECASE)
-
+    matched_files = re.findall(r'\[\[([^]]+\.(?:' + "|".join(ext[1:] for ext in extensions) + r'))\]\]', content, flags=re.IGNORECASE)
+    
     for filename in matched_files:
         encoded = urllib.parse.quote(filename)
-
-        src = os.path.join(attachments_dir, filename)
-        if os.path.exists(src):
-            shutil.copy(src, target_dir)
-        else:
-            print(f"⚠️ File not found: {src}")
-
-        thumbnail_pattern = re.compile(r'thumbnail:\s*"\[\[' + re.escape(filename) + r'\]\]"')
-        if embed_type == "image" and thumbnail_pattern.search(updated_content):
-            updated_content = thumbnail_pattern.sub(f'thumbnail: "{web_path}/{encoded}"', updated_content)
-            continue  
 
         if embed_type == "image":
             replacement = f"![Image]({web_path}/{encoded})"
@@ -64,8 +52,13 @@ def convert_internal_links(content, attachments_dir, target_dir, extensions, web
 
         updated_content = updated_content.replace(f"[[{filename}]]", replacement)
 
+        src = os.path.join(attachments_dir, filename)
+        if os.path.exists(src):
+            shutil.copy(src, target_dir)
+        else:
+            print(f"⚠️ File not found: {src}")
+    
     return updated_content
-
 
 def process_file(filepath, attachments_dir, img_dir, file_dir, destination_path):
     with open(filepath, "r", encoding="utf-8") as f:

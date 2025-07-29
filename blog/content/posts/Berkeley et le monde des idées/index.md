@@ -4,7 +4,7 @@ date: 2025-07-26
 draft: false
 tags: 
 categories: Philosophy
-thumbnail: "/images/Berkeley.png"
+thumbnail: "![Image](/images/Berkeley.png)"
 ---
 Imaginez-vous debout dans un verger, tenant une délicieuse pomme bien rouge dans votre main. Vous la touchez, sentez son parfum enivrant, et enfin, croquez dans sa chair juteuse et sucrée. Pour George Berkeley, cette pomme n'existe pas en dehors de votre esprit. Bienvenue dans le Monde des Idées, où tout ce qui existe dépend de la perception et où la réalité matérielle est une construction de nos pensées.
 
