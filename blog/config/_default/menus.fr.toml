@@ -15,11 +15,6 @@
   name = "Blog"
   pageRef = "posts"
   weight = 10
-
-[[main]]
-  name = "Topics"
-  pageRef = "topics"
-  weight = 20
   
 [[footer]]
   name = "Privacy"

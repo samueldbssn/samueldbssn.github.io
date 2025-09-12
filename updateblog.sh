@@ -5,22 +5,34 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-# Set variables for Obsidian to Hugo copy
-currentUser=$USER
+# Detect current user (works on Linux + Git Bash on Windows)
+currentUser=${USER:-$USERNAME}
 
-sourcePath="/home/$currentUser/Nextcloud/Luhman/posts"
-destinationPath="/home/$currentUser/Nextcloud/website/blog/content"
+# Detect platform (Linux vs Windows Git Bash)
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # Linux path
+    nextcloudPath="/home/$currentUser/Nextcloud"
+else
+    # Windows Git Bash path
+    # Convert Windows-style home (e.g. /c/Users/NAME) automatically
+    nextcloudPath="E:\Nextcloud"
+fi
+
+sourcePath="$nextcloudPath/Luhman/posts"
+
+# Destination: relative to script folder
+destinationPath="$SCRIPT_DIR/blog/content"
 
 # Set GitHub Repo
 myrepo="git@github.com:samueldbssn/samueldbssn.github.io.git"
 
 # Check for required commands
-for cmd in git rsync python3 hugo; do
-    if ! command -v $cmd &> /dev/null; then
-        echo "$cmd is not installed or not in PATH."
-        exit 1
-    fi
-done
+# for cmd in git rsync python3 hugo; do
+#     if ! command -v $cmd &> /dev/null; then
+#         echo "$cmd is not installed or not in PATH."
+#         exit 1
+#     fi
+# done
 
 # Default: don't push
 DO_PUSH=false
@@ -92,9 +104,9 @@ done
 echo "Processing image links in Markdown files..."
 
 postsDir="$sourcePath"
-attachmentsDir="/home/$currentUser/Nextcloud/Luhman/Attachments"
-staticImagesDir="/home/$currentUser/Nextcloud/website/blog/static/images"
-staticFilesDir="/home/$currentUser/Nextcloud/website/blog/static/files"
+attachmentsDir="$nextcloudPath/Luhman/Attachments"
+staticImagesDir="$SCRIPT_DIR/blog/static/images"
+staticFilesDir="$SCRIPT_DIR/blog/static/files"
 
 if [ ! -f "handle_attachments.py" ]; then
     echo "Python script handle_attachments.py not found."
@@ -111,7 +123,7 @@ if [ ! -d "$postsDir" ] || [ ! -d "$attachmentsDir" ] || [ ! -d "$staticImagesDi
 fi
 
 # Lancer le script avec les bons arguments
-if ! python3 handle_attachments.py "$postsDir" "$attachmentsDir" "$staticImagesDir" "$staticFilesDir" "$destinationPath/posts"; then
+if ! python handle_attachments.py "$postsDir" "$attachmentsDir" "$staticImagesDir" "$staticFilesDir" "$destinationPath/posts"; then
     echo "Failed to process image links."
     exit 1
 fi

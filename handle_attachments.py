@@ -38,7 +38,9 @@ def add_or_replace_title(content, title):
 
 def convert_internal_links(content, attachments_dir, target_dir, extensions, web_path, embed_type):
     updated_content = content
-    matched_files = re.findall(r'\[\[([^]]+\.(?:' + "|".join(ext[1:] for ext in extensions) + r'))\]\]', content, flags=re.IGNORECASE)
+    matched_files = re.findall(r'\[\[([^]]+\.(?:' + "|".join(ext[1:] for ext in extensions) + r'))\]\]', content)
+
+    print(f"🔍 Found {matched_files} files to process for {embed_type}.")
     
     for filename in matched_files:
         encoded = urllib.parse.quote(filename)
@@ -53,7 +55,10 @@ def convert_internal_links(content, attachments_dir, target_dir, extensions, web
         updated_content = updated_content.replace(f"[[{filename}]]", replacement)
 
         src = os.path.join(attachments_dir, filename)
+        print(f"📁 Copying {src} to {target_dir}")
         if os.path.exists(src):
+            print(f"✅ File exists: {src}")
+            print(f"➡️ Copying to {target_dir}")
             shutil.copy(src, target_dir)
         else:
             print(f"⚠️ File not found: {src}")

@@ -1,11 +1,13 @@
 ---
-Title: "Berkeley et le monde des idées"
+title: Berkeley et le monde des idées
 date: 2025-07-26
-draft: false
+draft: true
 tags: 
 categories: Philosophy
-thumbnail: "![Image](/images/Berkeley.png)"
+thumbnail: "[[Berkeley.png]]"
+Title: "Berkeley et le monde des idées"
 ---
+
 Imaginez-vous debout dans un verger, tenant une délicieuse pomme bien rouge dans votre main. Vous la touchez, sentez son parfum enivrant, et enfin, croquez dans sa chair juteuse et sucrée. Pour George Berkeley, cette pomme n'existe pas en dehors de votre esprit. Bienvenue dans le Monde des Idées, où tout ce qui existe dépend de la perception et où la réalité matérielle est une construction de nos pensées.
 
 _Pourtant cette pomme existe bien non ? Je peux même la goûter !_
@@ -18,4 +20,3 @@ _D'accord mais si je tourne le dos au verger, cela veut-il dire qu'il disparaît
 
 
 Ce n'est pas si simple que cela : dans ce cas, la perception visuelle du verger n'est en effet plus d'actualité ! Cela ne veut pas dire cependant que le verger "a disparu". Vous percevez encore beaucoup de choses de lui : l'odeur des pommes, la force d'attraction (bien qu'elle soit minime), ou peut-être même l'ombre qu'il créée en freinant la lumière du soleil. Le verger n'a en réalité jamais vraiment existé, il s'agissait seulement du croisement des perceptions que nous en avions. Si on lui tourne le dos, les perceptions sont seulement altérées. 
-
