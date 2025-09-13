@@ -67,3 +67,10 @@ enableEmoji = true
       name = 'fragmentrefs'
       type = 'fragments'
       weight = 10
+
+[params.assets]
+  disableSRI = true
+
+[security]
+  enableInline = false
+  enableSRI = false
