@@ -1,3 +1,9 @@
 [taxonomies]
   tag = "tags"
   category = "categories"
+
+[outputs]
+  home = ["HTML"]
+
+[params.assets]
+  enableSRI = false
