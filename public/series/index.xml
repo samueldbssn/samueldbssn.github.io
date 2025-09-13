@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Series on Accueil</title>
-    <link>/series/</link>
+    <link>http://localhost:1313/series/</link>
     <description>Recent content in Series on Accueil</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <managingEditor>sdubuisson08@gmail.com (Samuel Dubuisson)</managingEditor>
     <webMaster>sdubuisson08@gmail.com (Samuel Dubuisson)</webMaster>
     <copyright>© 2025 Samuel Dubuisson</copyright>
-    <atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
     
   </channel>
 </rss>

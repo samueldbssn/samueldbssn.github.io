@@ -3,31 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <url>
-    <loc>/</loc>
+    <loc>http://localhost:1313/</loc>
     <lastmod>2025-07-31T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>/posts/le-grand-livre-des-philosophes/</loc>
+    <loc>http://localhost:1313/posts/le-grand-livre-des-philosophes/</loc>
     <lastmod>2025-07-31T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>/posts/</loc>
+    <loc>http://localhost:1313/posts/</loc>
     <lastmod>2025-07-31T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>/posts/la-structure-carlsbad/</loc>
+    <loc>http://localhost:1313/posts/la-structure-carlsbad/</loc>
     <lastmod>2025-07-29T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>/posts/m%C3%A9moire-de-recherche/</loc>
+    <loc>http://localhost:1313/posts/m%C3%A9moire-de-recherche/</loc>
     <lastmod>2025-07-28T00:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.5</priority>
