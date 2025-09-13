@@ -163,24 +163,24 @@ if [ "$DO_PUSH" = true ]; then
         exit 1
     fi
 
-    # Step 8: Push the public folder to the deploy branch using subtree split and force push
-    echo "🚀 Deploying to GitHub Deploy..."
+    # # Step 8: Push the public folder to the deploy branch using subtree split and force push
+    # echo "🚀 Deploying to GitHub Deploy..."
 
-    # Créer une branche 'deploy' à partir de blog/public
-    if ! git subtree split -P blog/public -b deploy; then
-        echo "❌ Subtree split failed. Ensure 'blog/public' exists and is committed."
-        exit 1
-    fi
+    # # Créer une branche 'deploy' à partir de blog/public
+    # if ! git subtree split -P blog/public -b deploy; then
+    #     echo "❌ Subtree split failed. Ensure 'blog/public' exists and is committed."
+    #     exit 1
+    # fi
 
-    # Pousser vers la branche 'deploy' distante avec force
-    if ! git push origin deploy --force; then
-        echo "❌ Failed to push to remote 'deploy' branch."
-        git branch -D deploy
-        exit 1
-    fi
+    # # Pousser vers la branche 'deploy' distante avec force
+    # if ! git push origin deploy --force; then
+    #     echo "❌ Failed to push to remote 'deploy' branch."
+    #     git branch -D deploy
+    #     exit 1
+    # fi
 
-    # Nettoyage : suppression de la branche locale temporaire
-    git branch -D deploy
+    # # Nettoyage : suppression de la branche locale temporaire
+    # git branch -D deploy
 
     echo "✅ Deployment completed successfully!"
 else
