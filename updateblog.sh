@@ -21,7 +21,7 @@ fi
 sourcePath="$nextcloudPath/Luhman/posts"
 
 # Destination: relative to script folder
-destinationPath="$SCRIPT_DIR/blog/content"
+destinationPath="$SCRIPT_DIR/content"
 
 # Set GitHub Repo
 myrepo="git@github.com:samueldbssn/samueldbssn.github.io.git"
@@ -105,8 +105,8 @@ echo "Processing image links in Markdown files..."
 
 postsDir="$sourcePath"
 attachmentsDir="$nextcloudPath/Luhman/Attachments"
-staticImagesDir="$SCRIPT_DIR/blog/static/images"
-staticFilesDir="$SCRIPT_DIR/blog/static/files"
+staticImagesDir="$SCRIPT_DIR/static/images"
+staticFilesDir="$SCRIPT_DIR/static/files"
 
 if [ ! -f "handle_attachments.py" ]; then
     echo "Python script handle_attachments.py not found."
@@ -130,7 +130,6 @@ fi
 
 # Step 4: Build the Hugo site
 echo "Building the Hugo site..."
-cd blog || { echo "Failed to enter 'blog' directory."; exit 1; }
 if ! hugo; then
     echo "Hugo build failed."
     exit 1
