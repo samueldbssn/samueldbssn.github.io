@@ -17,5 +17,5 @@
   weight = 10
   
 [[footer]]
-  name = "Privacy"
+  name = "Privacy link"
   url = "https://external-link"
